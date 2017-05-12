@@ -125,7 +125,8 @@ export default class Service {
                     // must log in again
                     if (!Globals.loggingIn) {
                         Globals.loggingIn = true;
-                        context.navigation.navigate("Login", { Site: site });
+                        // context.navigation.navigate("Login", { Site: site });
+                        context.mustLogin(context, site);
                         Alert.alert("You must log in again");
                     }
                     throw "Must log in again";

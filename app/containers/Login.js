@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
 import { TabNavigator, StackNavigator } from 'react-navigation';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, Alert } from 'react-native';
 import { Tile, List, ListItem, Button, FormLabel, FormInput } from 'react-native-elements';
 import Service from '../lib/service'
 import * as Globals from '../lib/global'

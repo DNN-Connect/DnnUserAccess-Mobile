@@ -79,6 +79,7 @@ export function updateJwt(site, jwt) {
         });
         site.Token = jwt.accessToken;
         site.RefreshToken = jwt.renewalToken;
+        if (site.mustLogin) site.mustLogin = false;
         newSiteList.push(site);
         AsyncStorage.setItem('sites', JSON.stringify(newSiteList));
         dispatch(setSiteList(newSiteList));
@@ -93,6 +94,13 @@ export function updateJwt(site, jwt) {
 export function changeActiveSite(site) {
     return {
         type: types.CHANGE_ACTIVE_SITE,
+        site
+    }
+}
+
+export function mustLogin(context, site) {
+    return{
+        type: types.MUST_LOGIN,
         site
     }
 }

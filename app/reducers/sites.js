@@ -18,4 +18,12 @@ export const sites = createReducer({
             active: action.site,
         };
     },
+    [types.MUST_LOGIN](state, action) {
+        var site = action.site;
+        site.mustLogin = true;
+        return {
+            list: state.list,
+            active: site,
+        };
+    },
 });

@@ -79,9 +79,21 @@ class Users extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.sites.active.mustLogin) {
+      this.props.navigation.navigate("Login", { Site: this.props.sites.active });
+    }
+  }
+
   render() {
     // console.log(this.props);
-    var act = this.props.users.loading ? <ActivityIndicator /> : <View />;
+    var act = [];
+    if (this.props.users.loading) {
+      act.push(<ActivityIndicator key="act" />);
+    }
+    if (this.props.users.loadingFirstPage && !this.props.sites.active.mustLogin) {
+      act.push(<Spinner cancelable={true} key="spin" />);
+    }
     return (
       <View style={styles.container}>
         <View style={styles.searchContainer}>
@@ -90,7 +102,6 @@ class Users extends Component {
             autoCorrect={false}
           />
         </View>
-        <Spinner visible={this.props.users.loadingFirstPage} cancelable={true} />
         {act}
         <View style={styles.listContainer}>
           <List>

@@ -46,4 +46,13 @@ export const users = createReducer({
             currentUser: action.user,
         };
     },
+    [types.MUST_LOGIN](state, action) {
+        return {
+            list: state.list,
+            total: state.total,
+            loading: false,
+            loadingFirstPage: false,
+            currentUser: state.currentUser,
+        };
+    },
 });
