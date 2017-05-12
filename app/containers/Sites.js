@@ -17,8 +17,12 @@ class Sites extends Component {
   }
 
   viewSite(site) {
-    this.props.changeSite(this.props, site);
-    this.props.navigation.navigate('Users', { Site: site });
+    if (!this.props.app.network) {
+      Alert.alert('You have no network connection.');
+    } else {
+      this.props.changeSite(this.props, site);
+      this.props.navigation.navigate('Users', { Site: site });
+    }
   };
 
   deleteSite(site) {
@@ -29,7 +33,11 @@ class Sites extends Component {
   }
 
   addSite() {
-    this.props.navigation.navigate('AddSite');
+    if (!this.props.app.network) {
+      Alert.alert('You have no network connection.');
+    } else {
+      this.props.navigation.navigate('AddSite');
+    }
   }
 
   render() {
@@ -71,7 +79,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   // console.log(state);
   return {
-      sites: state.sites
+      sites: state.sites,
+      app: state.app,
   };
 }
 

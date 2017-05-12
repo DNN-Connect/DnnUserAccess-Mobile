@@ -22,17 +22,17 @@ class AppContainer extends Component {
 
   componentDidMount() {
     NetInfo.fetch().done((reach) => {
-     // console.log('Network: ' + reach);
+      this.props.setNetwork(reach);
     });
     NetInfo.addEventListener(
       'change',
-      this.networkChanged
+      (v) => this.networkChanged(v)
     );
     this.props.loadSites();
   }
 
   networkChanged(newValue) {
-    // console.log('Network: ' + newValue);
+    this.props.setNetwork(newValue);
   }
 
   onAddSite() {

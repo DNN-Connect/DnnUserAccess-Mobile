@@ -8,13 +8,13 @@ import { createLogger } from 'redux-logger'
 import reducer from './app/reducers'
 
 // middleware that logs actions
-// const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__  });
+const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__  });
 
 function configureStore(initialState) {
   const enhancer = compose(
     applyMiddleware(
       thunkMiddleware, // lets us dispatch() functions
-//      loggerMiddleware,
+     loggerMiddleware,
     ),
   );
   return createStore(reducer, initialState, enhancer);
