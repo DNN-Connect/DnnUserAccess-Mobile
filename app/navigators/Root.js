@@ -7,6 +7,7 @@ import UserRoles from '../containers/UserRoles';
 import SetPassword from '../containers/SetPassword';
 import AddSite from '../containers/AddSite';
 import Login from '../containers/Login';
+import Help from '../containers/Help';
 
 export default Root = StackNavigator({
     Sites: {
@@ -46,6 +47,12 @@ export default Root = StackNavigator({
         navigationOptions: {
             title: 'Login'
         }
+    },
+    Help: {
+        screen: Help,
+        navigationOptions: {
+            title: 'Help'
     }
+    },
 }, {
 });

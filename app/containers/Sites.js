@@ -7,7 +7,8 @@ import {
   Text,
   View,
   ScrollView,
-  AsyncStorage
+  AsyncStorage,
+  Button
 } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 
@@ -15,6 +16,10 @@ class Sites extends Component {
   constructor(props) {
     super(props);
   }
+
+  static navigationOptions = ({navigation, screenProps}) => ({ 
+   headerRight: <Button title="Help" onPress={() => navigation.navigate('Help')} /> 
+  });
 
   viewSite(site) {
     if (!this.props.app.network) {
