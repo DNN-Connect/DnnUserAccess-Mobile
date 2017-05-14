@@ -92,7 +92,7 @@ class Users extends Component {
       act.push(<ActivityIndicator key="act" />);
     }
     if (this.props.users.loadingFirstPage && !this.props.sites.active.mustLogin) {
-      act.push(<Spinner cancelable={true} key="spin" />);
+      act.push(<Spinner visible={true} cancelable={true} key="spin" />);
     }
     return (
       <View style={styles.container}>
